@@ -1,6 +1,13 @@
 
 #Ansible Setup
 
+Als erstes werden alle noch laufenden jackTrip-Prozesse auf den Zielhosts beendet, damit vorherige JackTrip-Verbindungen ausgeschlossen werden lönnen.
+Ein JackTrip Server wird auf den Master-Knoten gestartet, welcher als AP-05 defiert wird.
+Dann werden viele JackTrip-Clients gestartet, die sich mit dem Master-Knoten Verbinden.
+Dadaurch entsteht ein vollständig verbundener Jacktrip-Mesh.
+
+
+
 ```
 ---
 - name: Start fully connected Jacktrip Mesh
@@ -117,7 +124,6 @@ Zusammengefasst bereitet dieser Abschnitt das System vor, kopiert erforderliche 
         owner: member
         group: member
         mode: "u=rwx,g=rx,o=rx"
-      # Beschreibung der Aufgabe:
       # Stellt sicher, dass das Verzeichnis 'pieces' vorhanden ist und die richtigen Berechtigungen hat.
 
     - name: "Copy Files onto the server"
@@ -127,19 +133,16 @@ Zusammengefasst bereitet dieser Abschnitt das System vor, kopiert erforderliche 
         owner: member
         group: member
         mode: "0644"
-      # Beschreibung der Aufgabe:
       # Kopiert Dateien aus dem 'SC'-Verzeichnis auf den Server in das Verzeichnis '/home/member/pieces/pitchfilter/' mit den erforderlichen Berechtigungen.
 
     - name: "Kill sclang"
       shell: killall sclang
       ignore_errors: true
-      # Beschreibung der Aufgabe:
       # Beendet alle laufenden 'sclang'-Prozesse, falls vorhanden.
 
     - name: "Kill scsynth"
       shell: killall scsynth
       ignore_errors: true
-      # Beschreibung der Aufgabe:
       # Beendet alle laufenden 'scsynth'-Prozesse, falls vorhanden.
 
     - name: "Launch SC!"
@@ -148,7 +151,6 @@ Zusammengefasst bereitet dieser Abschnitt das System vor, kopiert erforderliche 
       shell: DISPLAY=:0 sclang main.scd >> /tmp/pitchfilter.log
       args:
         chdir: /home/member/pieces/pitchfilter/SC
-      # Beschreibung der Aufgabe:
       # Startet SuperCollider und führt das Skript 'main.scd' aus. Der Prozess läuft für einen Monat und die Ausgabe wird in '/tmp/pitchfilter.log' protokolliert.
 
 ```
