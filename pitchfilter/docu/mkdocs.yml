@@ -1,0 +1,7 @@
+site_name: Pitchfilter Dokumentation
+nav:
+    - Home: index.md
+    - Ansible Setup: ansible_setup
+    - Supercollider Setup: Supercollider_setup.md
+
+theme: readthedocs   
