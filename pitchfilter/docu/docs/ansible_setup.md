@@ -1,7 +1,7 @@
 
 #Ansible Setup
 
-Als erstes werden alle noch laufenden jackTrip-Prozesse auf den Zielhosts beendet, damit vorherige JackTrip-Verbindungen ausgeschlossen werden lönnen.
+Als erstes werden alle noch laufenden jackTrip-Prozesse auf den Zielhosts beendet, damit vorherige JackTrip-Verbindungen ausgeschlossen werden können.
 Ein JackTrip Server wird auf den Master-Knoten gestartet, welcher als AP-05 defiert wird.
 Dann werden viele JackTrip-Clients gestartet, die sich mit dem Master-Knoten Verbinden.
 Dadaurch entsteht ein vollständig verbundener Jacktrip-Mesh.
